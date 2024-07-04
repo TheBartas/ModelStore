@@ -1,0 +1,25 @@
+#Product-Table {
+    border-collapse: collapse;
+}
+
+#Product-Table th {
+    padding: 2%;
+    background-color: #688B58;
+}
+
+#Product-Table tr:nth-child(even) {
+    background-color: #4d7399;
+}
+
+#Product-Table tr:hover {
+    background-color: #A8CD9F;
+}
+
+#Product-Table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    width: 15%;
+    padding: 2% 3% 2% 3%; /* top, right, bottom, left*/
+}
