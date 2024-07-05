@@ -4,7 +4,7 @@ function Form() {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate("/products");
+    navigate("/product/insert");
   }
 
   return <button type="button" onClick={handleClick}>Dodaj produkt</button>
