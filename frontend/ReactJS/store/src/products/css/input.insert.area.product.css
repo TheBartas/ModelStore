@@ -1,0 +1,60 @@
+/* InputArea sheet */
+
+body {
+    position: relative;
+    background-color: #9CDBA6;
+}
+
+/* Input area */
+
+.Input-Area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Fieldset */
+
+.Filedset-Insert {
+    font-family: arial;
+    border-radius: 20px;
+    background: #50B498;
+    border: none;
+    border-radius: 2px;
+    padding: 1rem;
+}
+
+.Filedset-Insert label {
+    color: #53554A;
+    font-size: 20px;
+}
+
+.Filedset-Insert legend, .Filedset-Insert button {
+    background: #584B4F; 
+    color: #FEFEFE;
+}
+
+.Filedset-Insert legend {
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+  
+.Filedset-Insert input{
+    border-bottom: 1px solid #584B4F;
+}
+
+.Filedset-Insert button{
+    margin-top: 0.5rem;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+  
+.Filedset-Insert button:hover{
+    box-shadow:inset 0 0 0 9999px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+
+

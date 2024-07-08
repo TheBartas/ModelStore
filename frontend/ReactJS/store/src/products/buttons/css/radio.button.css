@@ -1,0 +1,65 @@
+.Area {
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 5%;
+    text-align: left;
+    font-weight: 600;
+}
+
+
+.Label-Radio {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.Label-Radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.Label-Radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+
+.Label-Radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.Label-Radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+
+.H2-Price {
+    margin-bottom: 8px;
+}
+
+
+
