@@ -1,18 +1,23 @@
-import ShowDetailsButton from "./buttons/show.details.button";
 import './css/table.products.css';
 import { useEffect, useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ShowNavBar from "../navbar/navbar.show.products";
+import RenderTable from './table';
+import FilterButtons from './buttons/filter.buttons';
+import RadioButtons from './buttons/filter.radio.buttons';
 
 
 function ProductsTable() {
     const [product, SetProduct] = useState([]);
+    const [filterProd, SetFilterProd] = useState([]);
     const navigate = useNavigate();
-    useEffect(()=>{
+    useEffect(()=> {
       async function fetchData() {
         try{
-          const result  = await axios.get('http://localhost:3000/products');
+          const result = await axios.get('http://localhost:3000/products');
           SetProduct(result.data);
+          SetFilterProd(result.data);
         } catch {
           navigate('/');
         }
@@ -20,31 +25,49 @@ function ProductsTable() {
       fetchData();
     }, [navigate]);
 
+
+
+
+
+
+
+    const filtredData = (val) => {
+
+        if (val.val1 !== -1 && val.val2 !== -1) {
+            const newItem = product.filter((newVal) => {
+                return newVal.price > val.val1 && newVal.price <= val.val2;
+            });
+            SetProduct(newItem);
+        }
+    }
+
+
+
+
+
+    const [price, setPrice] = useState("---");
+
+    const onOptionChange = (e) => {
+        setPrice(e.target.value)
+    }
+
     return (
         <div className="App-Show-Products"> 
-            <div className="Product-Table-header">
-                <table id="Product-Table">
-                    <tr>
-                        <th>Numer katalogowy</th>
-                        <th>Nazwa produktu</th>
-                        <th>Skala</th>
-                        <th>Cena</th>
-                        <th></th>
-                    </tr>
-                    { product.map((val, key) => {
-                        return (
-                            <tr key = {key}>
-                                <td>{val.prod_id}</td>
-                                <td>{val.name}</td>
-                                <td>{val.scale}</td>
-                                <td>{val.price}</td>
-                                <td>
-                                    <ShowDetailsButton/>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </table>
+            <div>
+                <ShowNavBar />
+            </div>
+            <div>
+                <FilterButtons 
+                    filterFun = {filtredData} 
+                    product = {filterProd} 
+                    SetProduct = {SetProduct}
+                    value = {price}/>
+            </div>
+            <div>
+                <RadioButtons onOptionChange={onOptionChange} price={price}/>
+            </div>             
+            <div className="Product-Table-header">             
+                <RenderTable product = {product}/>
             </div>
         </div>
     );
