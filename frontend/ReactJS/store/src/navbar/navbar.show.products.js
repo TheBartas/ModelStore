@@ -13,7 +13,6 @@ const ShowNavBar = () => {
                 <ul className="Ul-Panel">
                     <li><Link to='/product/insert' id="link">Dodaj produkt</Link></li>
                     <li><Link id="link">Usuń produkt</Link></li>
-                    <li><Link id="link">Znajdź produkt</Link></li>
                     <li><Link to='/' id="link">Menu główne</Link></li>
                 </ul>
             </div>

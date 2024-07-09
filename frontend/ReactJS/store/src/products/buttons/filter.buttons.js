@@ -1,11 +1,12 @@
+import './css/filter.button.css'
 
-const FilterButtons = ( {filterFun, SetProduct, product, value}) => {
+const FilterButtons = ( {filterFunPrice, SetProduct, product, value, valueScale}) => {
 
-    var val = { val1: 0, val2: 1};
+    var val = { val1: -1, val2: -1};
 
     switch(value) {
         case "---":
-            val = { val1 : -1,  val2 : -1};
+            val = { val1 : -2,  val2 : -2};
             break;
         case "0-50":
             val = { val1: 0.00, val2 : 50.00};
@@ -27,9 +28,11 @@ const FilterButtons = ( {filterFun, SetProduct, product, value}) => {
     }
 
     return (
-        <div>
-            <button onClick={() => filterFun(val)}> Filtruj </button>
-            <button onClick={() => SetProduct(product) }> Wszystkie </button>
+        <div className="Filter-buttons">
+            <fieldset>
+                <button onClick={() => filterFunPrice(val, valueScale)}> Filtruj </button>
+                <button onClick={() => SetProduct(product) }> Pokaż wszystkie </button>
+            </fieldset>
         </div>
     )
 }

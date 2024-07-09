@@ -1,12 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import HomeNavbar from './navbar/navbar.home';
 
 function Form() {
-  const navigate = useNavigate();
-
-  function handleClick() {
-    navigate("/product/insert");
-  }
-
-  return <button type="button" onClick={handleClick}>Dodaj produkt</button>
+  return (
+    <div>
+      <HomeNavbar />
+      <h1>Yet to do...</h1>
+    </div>
+  )
 }
 export default Form;

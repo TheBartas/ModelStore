@@ -28,27 +28,50 @@ function ProductsTable() {
 
 
 
+    /////// Filtrowanie ceny
+
+    const [price, setPrice] = useState("---");
+
+    const onOptionChangePrice = (e) => {
+        setPrice(e.target.value)
+    }
+
+
+    /////// Filtrowanie skali
+
+    const [scale, setScale] = useState("---");
+
+    const onOptionChangeScale = (e) => {
+        setScale(e.target.value)
+    }
 
 
 
-    const filtredData = (val) => {
+    
+    const filtredDataPrice = (val, valScale) => {
 
-        if (val.val1 !== -1 && val.val2 !== -1) {
+        if ((val.val1 !== -2 && val.val2 !== -2) && valScale !== "---") {
+            const newItem = product.filter((newVal) => {
+                return newVal.price > val.val1 && newVal.price <= val.val2 && newVal.scale === valScale;
+            });
+            SetProduct(newItem);
+        }
+        if ((val.val1 !== -2 && val.val2 !== -2) && valScale === "---") {
             const newItem = product.filter((newVal) => {
                 return newVal.price > val.val1 && newVal.price <= val.val2;
             });
             SetProduct(newItem);
         }
-    }
+        if ((val.val1 === -2 && val.val2 === -2) && valScale !== "---") {
+            const newItem = product.filter((newVal) => {
+                return newVal.scale === valScale;
+            });
+            SetProduct(newItem);
+        }
 
-
-
-
-
-    const [price, setPrice] = useState("---");
-
-    const onOptionChange = (e) => {
-        setPrice(e.target.value)
+        if ((val.val1 < 0 && val.val2 < 0) && valScale === "---") {
+            SetProduct(filterProd);
+        }
     }
 
     return (
@@ -58,13 +81,19 @@ function ProductsTable() {
             </div>
             <div>
                 <FilterButtons 
-                    filterFun = {filtredData} 
+                    filterFunPrice = {filtredDataPrice} 
                     product = {filterProd} 
                     SetProduct = {SetProduct}
-                    value = {price}/>
+                    value = {price}
+                    valueScale={scale}/>
             </div>
             <div>
-                <RadioButtons onOptionChange={onOptionChange} price={price}/>
+                <RadioButtons 
+                    onOptionChange={onOptionChangePrice} 
+                    onOptionChangeScale={onOptionChangeScale}
+                    scale={scale}
+                    price={price}
+                    />
             </div>             
             <div className="Product-Table-header">             
                 <RenderTable product = {product}/>

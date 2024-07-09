@@ -43,3 +43,26 @@ td {
     width: 15%;
     padding: 2% 3% 2% 3%; /* top, right, bottom, left*/
 }
+
+
+
+
+
+.No-Product-Error {
+    border: #496989 solid;
+    border-radius: 5px;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: larger;
+    background-color: #A3B6C8;
+}
+
+.No-Product-Error legend,  .No-Product-Error button {
+    background: #6E89A3; 
+    color: #FEFEFE;
+    margin-top: 0.5rem;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    
+}
