@@ -1,0 +1,31 @@
+
+.Filter-buttons {
+    position: absolute;
+    /* background-color: bisque; */
+    margin-top: 5.5%;
+    margin-left: 13.5%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.Filter-buttons button{
+    border: none;
+    background-color: #4B966C;
+    display: block;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: 7px;
+    transition-duration: .4s;
+}
+
+
+.Filter-buttons button:hover {
+    background-color: #517962;
+}
+
+.Filter-buttons fieldset {
+    background-color: #D3B169;
+    border:  #A6722C solid;
+    border-radius: 15%;
+}
