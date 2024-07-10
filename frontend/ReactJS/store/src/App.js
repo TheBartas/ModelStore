@@ -3,6 +3,8 @@ import ProductsTable from './products/table.products';
 import InputArea from './products/input.insert.area.product';
 import Form from './home';
 
+import ModProduct from './products/mod.product';
+
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
           <Route path='/' element = { <Form />} />
           <Route path='/products' element = { <ProductsTable />}/>     
           <Route path='/product/insert' element = { <InputArea /> }/>
+          <Route path='/product/update/:id' element = { <ModProduct/> } />
         </Routes>
       </header>
     </div>

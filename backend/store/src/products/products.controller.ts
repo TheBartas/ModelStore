@@ -8,7 +8,9 @@ import {
     Res,
     HttpException,
     HttpStatus,
-    Delete
+    Delete,
+    Query,
+    Req
 } from "@nestjs/common";
 import { ProductsService } from "./products.service";
 import { CreateProductDto } from "./dto/CreateProduct.dto";
@@ -26,8 +28,9 @@ export class ProductsController{
     }
 
     @Get('/products')
-    async getAllProducts() {
-        return await this.productsService.getAll();
+    async getAllProducts(@Query() query, @Req() req : Request) {
+        console.log(query);
+        return await this.productsService.getAll({});
     }
 
     @Get('/products/:id')

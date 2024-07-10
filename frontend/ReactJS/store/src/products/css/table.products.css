@@ -1,18 +1,28 @@
+
+.Search-Input {
+    padding: 5px 15px;
+    width: 300px;
+    margin-bottom: 1rem;
+}
+
+
 .App-Show-Products {
     text-align: center
 }
 
+
 .Product-Table-header{
-    margin-top: 6rem;
+    margin-top: 5rem;
     /* min-height: 30vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     /* font-size: calc(2px + 2vmin); */
-    font-size: 16px;
+    font-size: 1rem;
     color: white;
 }
+
 
 #Product-Table {
     border-collapse: collapse;
@@ -39,11 +49,12 @@
     border-bottom: 1px solid #ddd;
 }
 
-td {
-    width: 15%;
-    padding: 2% 3% 2% 3%; /* top, right, bottom, left*/
-}
 
+
+#Product-Table td { 
+    width: 15%;
+    padding: 10px 25px 10px 25px; /* top, right, bottom, left*/
+}
 
 
 

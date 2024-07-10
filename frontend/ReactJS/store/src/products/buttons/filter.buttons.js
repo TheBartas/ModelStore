@@ -1,6 +1,6 @@
 import './css/filter.button.css'
 
-const FilterButtons = ( {filterFunPrice, SetProduct, product, value, valueScale}) => {
+const FilterButtons = ( {filterFun, SetProduct, product, value, valueScale}) => {
 
     var val = { val1: -1, val2: -1};
 
@@ -30,7 +30,7 @@ const FilterButtons = ( {filterFunPrice, SetProduct, product, value, valueScale}
     return (
         <div className="Filter-buttons">
             <fieldset>
-                <button onClick={() => filterFunPrice(val, valueScale)}> Filtruj </button>
+                <button onClick={() => filterFun(val, valueScale)}> Filtruj </button>
                 <button onClick={() => SetProduct(product) }> Pokaż wszystkie </button>
             </fieldset>
         </div>

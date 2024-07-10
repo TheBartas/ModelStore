@@ -1,8 +1,17 @@
 import './css/show.details.css';
+import { useNavigate } from 'react-router-dom';
 
-
-function ShowDetailsButton() {
-    return (<button className="Button-Show-Details-Product">Pokaż szczegóły</button>);
+const ShowDetailsButton = ({obj}) => {
+    const navigate = useNavigate();
+    
+    const OnClickUpdate = () => {
+        navigate(`/product/update/${obj._id}`);
+    }
+    return (
+        <div>
+            <button className="Button-Show-Details-Product" onClick={OnClickUpdate }>Modyfikuj dane</button>
+        </div>
+    );
 }
 
 export default ShowDetailsButton;

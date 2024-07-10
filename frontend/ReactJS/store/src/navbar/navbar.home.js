@@ -10,7 +10,6 @@ const HomeNavbar = () => {
             <div className="nav-items">
                 <ul className="Ul-Panel">
                     <li><Link to='/products' id="link">Wyświetl produkty</Link></li>
-                    <li><Link id="link">Usuń produkt</Link></li>
                     <li><Link to='/product/insert' id="link">Dodaj produkt</Link></li>
                 </ul>
             </div>

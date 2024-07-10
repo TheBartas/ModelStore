@@ -1,27 +1,27 @@
 
 .Button-Show-Details-Product {
-  background-color: #508D4E;
-  border: 1px solid transparent;
-  border-radius: .75rem;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  flex: 0 0 auto;
-  font-size: 1rem;
-  font-weight: 200;
-  line-height: 1.0rem;
-  padding: .60rem 1.1rem;
-  text-align: center;
-  transition-duration: .4s;
-  width: auto;
-}
-
-.Button-Show-Details-Product:hover {
-  background-color: #374151;
-}
-
-.Button-Show-Details-Product:focus {
-  box-shadow: none;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
+    background-color: #508D4E;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 1.0rem;
+    padding: .60rem 1.1rem;
+    text-align: center;
+    transition-duration: .4s;
+    width: auto;
+  }
+  
+  .Button-Show-Details-Product:hover {
+    background-color: #374151;
+  }
+  
+  .Button-Show-Details-Product:focus {
+    box-shadow: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }

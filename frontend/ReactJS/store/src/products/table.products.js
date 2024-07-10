@@ -25,9 +25,6 @@ function ProductsTable() {
       fetchData();
     }, [navigate]);
 
-
-
-
     /////// Filtrowanie ceny
 
     const [price, setPrice] = useState("---");
@@ -35,7 +32,6 @@ function ProductsTable() {
     const onOptionChangePrice = (e) => {
         setPrice(e.target.value)
     }
-
 
     /////// Filtrowanie skali
 
@@ -45,10 +41,9 @@ function ProductsTable() {
         setScale(e.target.value)
     }
 
+    /////// Filtrowanie 
 
-
-    
-    const filtredDataPrice = (val, valScale) => {
+    const filtredData = (val, valScale) => {
 
         if ((val.val1 !== -2 && val.val2 !== -2) && valScale !== "---") {
             const newItem = product.filter((newVal) => {
@@ -81,7 +76,7 @@ function ProductsTable() {
             </div>
             <div>
                 <FilterButtons 
-                    filterFunPrice = {filtredDataPrice} 
+                    filterFun = {filtredData} 
                     product = {filterProd} 
                     SetProduct = {SetProduct}
                     value = {price}
@@ -96,7 +91,7 @@ function ProductsTable() {
                     />
             </div>             
             <div className="Product-Table-header">             
-                <RenderTable product = {product}/>
+                <RenderTable product = {product} setProduct={SetProduct} basicProdut={filterProd}/>
             </div>
         </div>
     );

@@ -3,7 +3,7 @@ import './navbar.insert.css';
 
 
 
-const ShowNavBar = () => {
+const DeleteNavBar = () => {
     return (
         <nav className="Navbar-Panel">
             <div className="nav-logo">
@@ -12,6 +12,7 @@ const ShowNavBar = () => {
             <div className="nav-items">
                 <ul className="Ul-Panel">
                     <li><Link to='/product/insert' id="link">Dodaj produkt</Link></li>
+                    <li><Link to='/products' id="link">Wyświetl produkty</Link></li>
                     <li><Link to='/' id="link">Menu główne</Link></li>
                 </ul>
             </div>
@@ -20,7 +21,7 @@ const ShowNavBar = () => {
 }
 
 
-export default ShowNavBar;
+export default DeleteNavBar;
 
 
 
