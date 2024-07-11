@@ -1,10 +1,13 @@
-import HomeNavbar from './navbar/navbar.home';
+// import HomeNavbar from './navbar/navbar.home';
+
+import SignUp from "./auth/signup";
 
 function Form() {
+
   return (
     <div>
-      <HomeNavbar />
-      <h1>Yet to do...</h1>
+      {/* <HomeNavbar /> */}
+      <SignUp />
     </div>
   )
 }

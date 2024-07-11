@@ -1,0 +1,50 @@
+
+
+.Auth-Input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15vh;
+}
+
+.Auth-Input-Form {
+    background-color: #ffe4c4;
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+
+.Auth-Button {
+    margin-top: 0.5rem;
+    width: 100%;
+    display: block;
+    padding: 3%;
+    border-radius: 5px;
+}
+
+#succes {
+    background-color: #04AA6D;
+    color: #ECEFF1;
+}
+
+
+.Input-Area-SignUp {
+    width: 300px;
+    margin-bottom: 1rem;
+}
+
+.Input-Area-SignUp input {
+    width: 100%;
+    padding: 5px;
+}
+
+
+.Main-Text-SignUp {
+    text-align: center;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.Danger-Span {
+    color: #c2142e
+}
