@@ -4,8 +4,8 @@ import { Model } from "mongoose";
 import { Product } from "../schemas/product.schema";
 import { CreateProductDto } from "./dto/CreateProduct.dto";
 
-import { log, error } from "console";
-import { query } from "express";
+// import { log, error } from "console";
+// import { query } from "express";
 
 @Injectable()
 export class ProductsService {

@@ -1,32 +1,20 @@
 import { 
     Controller, 
-    Get, 
     Post, 
-    Req, 
-    Param,
-    HttpCode
+    Request, 
 } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
+import { LocalAuthGuard } from './users/auth/local-auth.guard';
+import { AuthService } from './users/auth/auth.service';
 @Controller({})
 
 export class AppController {
-    // @Get()
-    // getUser(){
-    //     return { name: "Bartek", country: "Poland"};
-    // }
-    @Post()
-    store(@Req() req: Request) {
-        return req.body;
-    }
 
-    @Get('/:userId')
-    getUser(@Param() userId: number) {
-        return userId;
+    constructor(private authService : AuthService) {}
+    @UseGuards(LocalAuthGuard)
+    @Post('user/login')
+    async checkUser(@Request() req) : Promise<{}> {
+        return this.authService.login(req.user);
     }
-
-
-    @Get('/models')
-    @HttpCode(200)
-    getModels(@Req() req: Request) {
-        return req.body;
-    }
+  
 }
