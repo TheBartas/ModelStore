@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './auth.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../auth.user';
 
 function LogIn() {
     const navigate = useNavigate();
-
+    const { login } = useAuth();
+ 
     const goSignIn = () => {
         navigate('/');
     }
@@ -14,8 +16,6 @@ function LogIn() {
 
     const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
@@ -27,7 +27,12 @@ function LogIn() {
         }
 
         await axios.post('http://localhost:3000/user/login', userCheck)
-            .then(()=> navigate('/products'))
+            .then((result) => {
+                localStorage.setItem('user', JSON.stringify(result.data.access_token));
+                login().then(() => navigate('profile/products'));
+                // login();
+                // navigate('profile/products');
+            })
             .catch((error) => {
                 if (error.response?.data?.statusCode === 404) {
                     //alert('Nieprawidłowy email lub hasło!');
@@ -38,8 +43,6 @@ function LogIn() {
                 }
             })
     }
-
-
 
     return (
         <div>

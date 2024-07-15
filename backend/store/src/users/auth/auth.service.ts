@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-
 import { Injectable } from "@nestjs/common";
 import * as argon2 from 'argon2'; // npm install argon2
 import { JwtService } from "@nestjs/jwt";
@@ -28,21 +27,18 @@ export class AuthService {
         return argon2.verify(storedPassword, password);
     }
 
-    async validateUser(username : string, password : string) : Promise<any> {
+    async validateUser(username : string, password : string) : Promise<User> {
         const user = await this.userServiecs.getUserByUsername(username);
         const validationResult = await this.validatePassword(user.password, password);
         if (user && validationResult) {
-            const { password, ...result} = user;
-            return result;
+            return user;
         }
         return null;
     }
 
-
-    async login(User: any) {
-        const { password, email } = User;
-        console.log(User.username);
-        const payload = { username: User.username, sub: User.email };
+    async login(user: User) {
+        const payload = { username: user.username, email: user.email };
+        //const { username, email} = user;
         return {
             access_token : this.jwtService.sign(payload) // generuje JWT
         };

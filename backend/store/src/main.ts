@@ -1,15 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-
-
-
-
-
-
-import { createCipheriv, randomBytes, scrypt } from 'crypto';
-import { promisify } from 'util';
-import { createDecipheriv } from 'crypto';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 
 
