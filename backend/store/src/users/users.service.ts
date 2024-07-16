@@ -18,4 +18,8 @@ export class UsersService {
         return await this.userModel.findOne({username : username});
     }
 
+    async updatePassword(password : string, username : string) {
+        return await this.userModel.findOneAndUpdate({ })
+    }
+
 }

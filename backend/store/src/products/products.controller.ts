@@ -29,7 +29,6 @@ export class ProductsController{
 
     @Get('/products')
     async getAllProducts(@Query() query, @Req() req : Request) {
-        console.log(query);
         return await this.productsService.getAll({});
     }
 

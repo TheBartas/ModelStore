@@ -14,6 +14,14 @@ function InputArea() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
+        const token = localStorage.getItem('access_token');
+        const config = {
+            headers : {
+                authorization : `Bearer ${token}`
+            }
+        }
+
         const product = {
             prod_id: prod_id,
             name: name,
@@ -21,7 +29,7 @@ function InputArea() {
             price: price
         }
 
-        await axios.post("http://localhost:3000/product/insert", product);
+        await axios.post("http://localhost:3000/product/insert", product, config);
         e.target.reset();
     }
 

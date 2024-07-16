@@ -7,6 +7,11 @@ function SignUpValidation(values) {
     const passwordPattern = /^(?=.*[A-Z])(?=.*[@$!%*#?&])(?!.* ).{8,}$/;
 
 
+
+    if (values.username === '') {
+        error.username = 'Nazwa użytkownika nie może być pusta!';
+    }
+
     if (values.email === '') {
         error.email = 'Email nie może być pusty';
     } else if (!emailPattern.test(values.email)) {

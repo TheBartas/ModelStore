@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import * as argon2 from 'argon2'; // npm install argon2
 import { JwtService } from "@nestjs/jwt";
 import { UsersService } from "../users.service";
@@ -29,6 +29,9 @@ export class AuthService {
 
     async validateUser(username : string, password : string) : Promise<User> {
         const user = await this.userServiecs.getUserByUsername(username);
+        if (!user) {
+            throw new NotFoundException();
+        }
         const validationResult = await this.validatePassword(user.password, password);
         if (user && validationResult) {
             return user;
@@ -43,4 +46,10 @@ export class AuthService {
             access_token : this.jwtService.sign(payload) // generuje JWT
         };
     }
+
+    async decodeToken(token : string) : Promise<any> {
+        return this.jwtService.decode(token);
+    }
+
+    
 }

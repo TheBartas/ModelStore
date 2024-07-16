@@ -7,22 +7,26 @@ import RenderTable from './table';
 import FilterButtons from './buttons/filter.buttons';
 import RadioButtons from './buttons/filter.radio.buttons';
 
-
 function ProductsTable() {
     const [product, SetProduct] = useState([]);
     const [filterProd, SetFilterProd] = useState([]);
     const navigate = useNavigate();
     useEffect(()=> {
-      async function fetchData() {
-        try{
-          const result = await axios.get('http://localhost:3000/products');
-          SetProduct(result.data);
-          SetFilterProd(result.data);
-        } catch {
-          navigate('/');
+        const token = localStorage.getItem('access_token');
+        const config = {
+            headers : { authorization : `Bearer ${token}`}
         }
-      }
-      fetchData();
+        async function fetchData() {
+            try{
+                const result = await axios.get('http://localhost:3000/products', config);
+                SetProduct(result.data);
+                SetFilterProd(result.data);
+            } catch(error) {
+                alert(error);
+                navigate('/'); // czy to na pewno jest dobry pomysł?
+            }
+        }
+        fetchData();
     }, [navigate]);
 
     /////// Filtrowanie ceny

@@ -3,7 +3,8 @@ import {
     Post, 
     Get,
     Request, 
-    UseGuards } from "@nestjs/common";
+    UseGuards, 
+    Put} from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { AuthGuard } from "@nestjs/passport";
 import { User } from "src/schemas/user.schema";
@@ -23,12 +24,9 @@ export class AuthController {
         return await this.authService.login(req.user);
     }
 
-
-    @UseGuards(AuthGuard('jwt'))
-    @Get('profile')
-    async getProfile(@Request() req) : Promise<User>{
-        return req.user;
-    }
-
-
+    // @UseGuards(AuthGuard('jwt'))
+    // @Get('profile')
+    // async getProfile(@Request() req) : Promise<User>{
+    //     return req.user;
+    // }
 }

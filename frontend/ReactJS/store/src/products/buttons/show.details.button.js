@@ -5,7 +5,7 @@ const ShowDetailsButton = ({obj}) => {
     const navigate = useNavigate();
     
     const OnClickUpdate = () => {
-        navigate(`/product/update/${obj._id}`);
+        navigate(`/profile/product/update/${obj._id}`);
     }
     return (
         <div>

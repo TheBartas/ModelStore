@@ -11,9 +11,18 @@ function ModProduct() {
 
     const [obj, setObj] = useState([]);
     useEffect(()=> {
+
+
+        const token = localStorage.getItem('access_token');
+        const config = {
+            headers : { authorization : `Bearer ${token}`}
+        }
+
+
+
         async function fetchData() {
           try{
-            const result = await axios.get(`http://localhost:3000/products/${params.id}`);
+            const result = await axios.get(`http://localhost:3000/products/${params.id}`, config);
             setObj(result.data);
 
           } catch {
@@ -34,6 +43,12 @@ function ModProduct() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
+        const token = localStorage.getItem('access_token');
+        const config = {
+            headers : { authorization : `Bearer ${token}`}
+        }
+
         const product = {
             prod_id: prod_id,
             name: name,
@@ -41,7 +56,7 @@ function ModProduct() {
             price: price
         }
 
-        await axios.put(`http://localhost:3000/products/edit/${params.id}`, product);
+        await axios.put(`http://localhost:3000/products/edit/${params.id}`, product, config);
         e.target.reset();
     }
 
