@@ -22,18 +22,18 @@ function SignUp() {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        setErrors(SignUpValidation({username, email, password, confPassword}));
-
         const user = {
             username : username,
             email : email,
             password : password
         }
-
-        await axios.post("http://localhost:3000/user/signup", user);
-        e.target.reset();
-
-        navigate('/login');
+        
+        try {
+            await axios.post("http://localhost:3000/user/signup", user)
+            navigate('/login');
+        } catch {
+            setErrors(SignUpValidation({username, email, password, confPassword}));
+        }
     }
     return (
         <div>

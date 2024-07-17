@@ -4,6 +4,7 @@ import InputArea from './products/input.insert.area.product';
 import Form from './home';
 import ModProduct from './products/mod.product';
 import LogIn from './auth/login';
+import { ChangePassword } from './user/change.password';
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider, RequireAuth } from './auth.user';
 
@@ -32,9 +33,9 @@ function App() {
                 </RequireAuth>
               }/>
             <Route path='/profile/settings/password' element = {
-                // <RequireAuth>
-                  <h1>Zmień hasło!</h1>
-                // </RequireAuth> 
+                <RequireAuth>
+                  <ChangePassword />
+                </RequireAuth> 
               }/>
           </Routes>
         </AuthProvider>

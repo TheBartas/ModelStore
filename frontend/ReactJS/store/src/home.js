@@ -10,9 +10,7 @@ function Form() {
   logout();
 
   return (
-
     <div>
-      {/* <HomeNavbar /> */}
       <SignUp />
     </div>
   )

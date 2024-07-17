@@ -10,7 +10,6 @@ const InsertNavbar = () => {
             <div className="nav-items">
                 <ul className="Ul-Panel">
                     <li><Link to='/profile/products' id="link">Wyświetl produkty</Link></li>
-                    <li><Link to='/' id="link">Menu główne</Link></li>
                 </ul>
             </div>
         </nav>

@@ -12,8 +12,8 @@ const ShowNavBar = () => {
             <div className="nav-items">
                 <ul className="Ul-Panel">
                     <li><Link to='/profile/product/insert' id="link">Dodaj produkt</Link></li>
-                    <li><Link to='/' id="link">Menu główne</Link></li>
-                    <li><Link to='/profile/settings/password' id='link'></Link>Zmień hasło</li>
+                    <li><Link to='/' id="link">Wyloguj</Link></li>
+                    <li><Link to='/profile/settings/password' id='link'>Zmień hasło</Link></li>
                 </ul>
             </div>
         </nav>

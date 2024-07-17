@@ -11,8 +11,8 @@ import { AuthService } from "./auth/auth.service";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/CreateUser.dto";
 import { User } from "src/schemas/user.schema";
+import { UpdateUserDto } from "./dto/update.user.dto";
 import { ChangePasswordDto } from "./dto/change.password.dto";
-import { request } from "http";
 
 
 @Controller('user')
@@ -28,23 +28,23 @@ export class UserController {
 
 
     @Put('update-password')
-    async changePassword(@Body() changePasswordDto : ChangePasswordDto, @Request() req) {
-        const payload : string= req.headers['authorization'].split(' ')[1];
-        try {
-            const result = await this.authService.decodeToken(payload);
-            const user = (await this.usersService.getUserByUsername(result.username)).password;
-            const validatePassword = await this.authService.validatePassword(user, changePasswordDto.password);
-            if (!validatePassword) throw new UnauthorizedException('Invalid password!');
-            const hashedNewPassword = await this.authService.hashPassword(changePasswordDto.newPassword);
-            
-        } catch {
+    async updatePassword(@Body() changePasswordDto : ChangePasswordDto, @Request() req) {
+        const payload : string = req.headers['authorization'].split(' ')[1];
+        const userPayload = await this.authService.decodeToken(payload);
+        const user = await this.usersService.getUserByUsername(userPayload.username);
+        const validatePassword = await this.authService.validatePassword(user.password, changePasswordDto.oldPassword);
 
-        }
+        if (!validatePassword) throw new UnauthorizedException('Invalid old password!');
+
+        const updateUser : UpdateUserDto = new UpdateUserDto();
+        updateUser.password = await this.authService.hashPassword(changePasswordDto.newPassword);
+        
+        return await this.usersService.updatePassword(user.username, updateUser);
     }
 
 }
 // {
-//     "username": "JanuszKowalski1987",
-//     "email": "jankow@example.com",
-//     "password": "2hhYrr"
+    // "username": "JanuszKowalski1987",
+    // "email": "jankow@example.com",
+    // "password": "2hhYrr" / 2hhYrrr
 // }
