@@ -12,7 +12,6 @@ import {
 import { CartService } from "./cart.service";
 import { Cart, ProductCart } from "src/schemas/cart.schema";
 import { CreateCartDto, CreateProductCartDto } from "./dto/create.cart.dto";
-import { UsersService } from "src/users/users.service";
 
 
 @Controller('cart')
@@ -29,23 +28,23 @@ export class CartController {
         return await this.cartService.getProducts();
     }
 
-    @Put('add-product')
-    async addProductToCart(@Query() query : { customer_id : string}, @Body() createProductCartDto : CreateProductCartDto, @Response() res) : Promise<Cart | Response> {
-        return await this.cartService.addProductToCart(query, createProductCartDto, res);
+    @Post('add-product')
+    async addProductToCart(@Body() createProductCartDto : CreateProductCartDto, @Response() res) : Promise<Cart | Response> {
+        return await this.cartService.addProductToCart(createProductCartDto, res);
     }
 
     @Delete('delete-product')
-    async deleteProductFromCart(@Query() query : { customer_id : string, prod_id : number}) : Promise<Cart> {
+    async deleteProductFromCart(@Query() query : { prod_id : number}) : Promise<Cart> {
         return await this.cartService.deleteProduct(query);
     }
 
     @Put('add-product/quantity')
-    async addQuantity(@Query() query : { customer_id : string, prod_id : number}) {
+    async addQuantity(@Query() query : { prod_id : number}) {
         return await this.cartService.addQuantity(query);
     }
 
-    @Delete('delete-quantity')
-    async deleteQuantity(@Query() query : { customer_id : string, prod_id : number}) {
+    @Put('delete-quantity')
+    async deleteQuantity(@Query() query : { prod_id : number}) {
         return await this.cartService.deleteQuantity(query);
     }
 }

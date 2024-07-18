@@ -1,7 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema()
-export class User {
+export class User extends Document{
     @Prop({required : true})
     username : string;
 
@@ -10,6 +11,8 @@ export class User {
 
     @Prop({required : true})
     password : string;
+
+    _id: MongooseSchema.Types.ObjectId;
 }
 
 

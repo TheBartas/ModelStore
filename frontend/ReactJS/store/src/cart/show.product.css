@@ -1,0 +1,73 @@
+.Show-Product-Area {
+    display: flex;          
+    flex-wrap: wrap;        
+    justify-content: flex-start; 
+    align-items: flex-start; 
+}
+
+.Show-Product {
+    background-color:  #B7E4C7;
+    font-size: 1.2rem;
+    font-weight: 400;
+    display: flex;           
+    flex-direction: row;    
+    align-items: center;     
+    margin: 10px;    
+    border: none;
+    border-radius: 2px;       
+    /* border: 2px solid #ccc;   */
+    padding: 1.5rem;          
+    box-sizing: border-box;  
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Przesunięcie, rozmycie, kolor */
+}
+
+.Show-Product div {
+    width: 150px;
+    display: flex;           
+    flex-direction: column;  
+    align-items: center;     
+    margin: 0 10px;          
+}
+
+.Show-Product legend {
+    font-size: 0.8rem;
+}
+
+.Show-Product div fieldset {
+    background-color: #ABEBC6;
+    background-color: #D2B4DE;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    text-align: end;
+    padding-left: 2px;
+    padding-right: 10px;
+}
+
+.Show-Product div #Div-One fieldset {
+    padding-right: 20px;
+}
+
+.Show-Product div legend {
+    font-weight: 500;
+}
+
+.Show-Product .button-container {
+    display: flex;
+    gap: 5px; /* Odległość między przyciskami */
+}
+
+.Plus-Button, .Minus-Button {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease; /*ease - definiuje jak zmienia się tempo animacji*/
+}
+
+.Plus-Button:hover, .Minus-Button:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); 
+}
+
+
+

@@ -1,0 +1,28 @@
+.remove-button {
+    background-color: #ff4d4d;
+    color: #ffffff; 
+    border: none;
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.remove-button:hover {
+    background-color: #cc0000; 
+    transform: scale(1.1); /* Powiększenie przycisku przy najechaniu */
+}
+
+.remove-icon {
+    display: inline-block;
+    line-height: 1;
+}
+
+.remove-button:focus {
+    outline: none; /* Usunięcie domyślnego obramowania fokusa */
+}
