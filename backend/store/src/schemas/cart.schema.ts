@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 
 @Schema({_id : false})
-class Product {
+export class ProductCart {
     @Prop({required : true})
     prod_id : number;
 
@@ -14,14 +14,16 @@ class Product {
 }
 
 
+export const ProductCartSchema = SchemaFactory.createForClass(ProductCart);
+
 
 @Schema()
 export class Cart {
     @Prop({required : true})
     customer_id : string;
 
-    @Prop([Product])
-    products : Product[];
+    @Prop({type : [ProductCartSchema]})
+    products : ProductCart[];
 }
 
 export const CartSchema = SchemaFactory.createForClass(Cart);

@@ -16,7 +16,7 @@ export class UsersService {
     }
 
     async getUserByUsername(username : string) : Promise<User> {
-        return await this.userModel.findOne({username : username});
+        return await this.userModel.findOne({username : username}).exec();
     }
 
     async updatePassword(username : string, updateUserDto : UpdateUserDto) {

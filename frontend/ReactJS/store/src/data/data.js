@@ -27,3 +27,20 @@ const exampleData = [
 ]
 
 export default exampleData;
+
+
+// {
+//     "customer_id" : "6697b30e7e6d6e873d632433",
+//     "products" : [
+//         {
+//             "prod_id" : 12121,
+//             "name" : "7TP",
+//             "quantity" : 1
+//         },
+        // {
+        //     "prod_id" : 45890,
+        //     "name" : "Spitfire Mk. IX",
+        //     "quantity" : 1
+        // }
+//     ]
+// }
