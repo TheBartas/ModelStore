@@ -1,5 +1,6 @@
 import ShowDetailsButton from "./buttons/show.details.button";
 import DeleteButon from "./buttons/delete.button";
+import { AddProductToCart } from "./buttons/add-product-cart.button";
 import './css/table.products.css';
 import { useState } from "react";
 
@@ -32,6 +33,7 @@ const RenderTable = ({product, basicProdut, setProduct}) => {
                     <th>Cena</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             )
         }
@@ -58,6 +60,9 @@ const RenderTable = ({product, basicProdut, setProduct}) => {
                             </td>
                             <td>
                                 <DeleteButon val = {val._id}/>
+                            </td>
+                            <td>
+                                <AddProductToCart prod_id={val.prod_id} name={val.name} quantity={1}/>
                             </td>
                         </tr>
                     ))

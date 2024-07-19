@@ -27,25 +27,8 @@ function LogIn() {
             password : password
         }
 
-        // await axios.post('http://localhost:3000/user/login', userCheck)
-        //     .then((result) => {
-        //         localStorage.setItem('access_token', result.data.access_token);
-        //         login().then(() => navigate('/profile/products'));
-        //     })
-        //     .catch((error) => {
-        //         if (error.response?.data?.statusCode === 404) {
-        //             //alert('Nieprawidłowy email lub hasło!');
-        //             setErrors({ all : "Nieprawidłowa nazwa użytkownika lub hasło!"})
-        //         } else if(error.response?.data?.statusCode === 401) {
-        //             //alert(error);
-        //             setErrors({ password : "Nieprawidłowe hasło!"});
-        //         }
-        //     })
-
-
         try {
             const result = await axios.post('http://localhost:3000/user/login', userCheck);
-            //localStorage.setItem('user', result.data.access_token);
             const token = await result.data.access_token;
             await login(token);
             navigate('/profile/products');
@@ -82,7 +65,7 @@ function LogIn() {
                         <div  className='Input-Area-SignUp'>
                             <label htmlFor='password'><b>Hasło:</b> </label>
                             <br></br>
-                            <input type='password' placeholder='Wprowadź hasło' onChange={(e) => setPassword(e.target.value)} required pattern=".*\S."></input>
+                            <input type='password' placeholder='Wprowadź hasło' onChange={(e) => setPassword(e.target.value)} required></input>
                             {errors.password && <span className='Danger-Span'> {errors.password}</span>}
                             {errors.all && <span className='Danger-Span'> {errors.all}</span>}
                         </div>

@@ -44,3 +44,23 @@ export default exampleData;
         // }
 //     ]
 // }
+
+
+
+
+// {
+//     "username": "tomasz_23",
+//     "email": "andrzej@example.com",
+//     "password": "12345@Ga"
+// }
+
+
+// {
+    // "username": "JanuszKowalski1987",
+    // "email": "tomasz23@gmail.com.com",
+    // "password": "2hhYrr" / 2hhYrrr
+// }
+
+
+
+// password: 12345@Ga

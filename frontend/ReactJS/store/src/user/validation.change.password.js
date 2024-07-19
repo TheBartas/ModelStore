@@ -3,6 +3,7 @@ export default function ChangePasswordValidation(values) {
     const passwordPattern = /^(?=.*[A-Z])(?=.*[@$!%*#?&])(?!.* ).{8,}$/;
 
 
+    console.log(values.newPassword);
     if (!passwordPattern.test(values.newPassword)) {
         alert('Nowe hasło musi zawierać:\n -Co najmniej jeden znak specjalny (@$!%*#?&),\n -Minimum jedną dużą literę,\n -Minimum 8 znaków.');
         error.newPassword = 'Nieprawidłowy format!';

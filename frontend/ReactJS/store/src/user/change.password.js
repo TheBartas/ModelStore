@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './change.password.css';
 import { useNavigate } from 'react-router-dom';
 import ChangePasswordValidation from './validation.change.password';
 import axios from 'axios';
 import { useAuth } from '../auth.user';
+
+const PASSWORD_PATTERN = /^(?=.*[A-Z])(?=.*[@$!%*#?&])(?!.* ).{8,}$/;
 
 export function ChangePassword() {
     const navigate = useNavigate();
@@ -11,21 +13,38 @@ export function ChangePassword() {
 
     const [errors, setErrors] = useState({});
     const [oldPassword, setOldPassword] = useState('');
+
     const [newPassword, setNewPassword] = useState('');
+    const [validNewPassword, setValidNewPassword] = useState(false);
+    const [validNewPasswordFocus, setValidNewPasswordFocus] = useState(false);
+
     const [checkNewPassword, setCheckNewPassword] = useState('');
+    const [validCheckNewPassword, setValidCheckNewPassword] = useState(false);
+    const [validCheckPasswordFocus, setValidCheckPasswordFocus] = useState(false);
 
 
+    useEffect(()=>{
+        setValidNewPassword(PASSWORD_PATTERN.test(newPassword));
+        setValidCheckNewPassword(checkNewPassword === newPassword);
+    }, [newPassword, checkNewPassword])
 
 
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        const changePasswordData = {
-            oldPassword : oldPassword,
-            newPassword : newPassword 
+
+        const guard = PASSWORD_PATTERN.test(newPassword);
+        if(!guard) {
+            return;
         }
 
+
+
         try {
+            const changePasswordData = {
+                oldPassword : oldPassword,
+                newPassword : newPassword 
+            }
             await axios.put('http://localhost:3000/user/update-password', changePasswordData);
             logout();
             navigate('/login');
@@ -65,13 +84,38 @@ export function ChangePassword() {
                         <div className='Input-Area-Change-Password'>
                             <label htmlFor='password'><b>Nowe hasło:</b></label>
                             <br></br>
-                            <input type='password' required onChange={(e) => setNewPassword(e.target.value)}></input>
+                            <input 
+                            type='password' 
+                            required 
+                            onChange={(e) => setNewPassword(e.target.value)}
+                            aria-invalid={validNewPassword ? "false" : "true"}
+                            aria-describedby='pwdnote'
+                            onFocus={()=>setValidNewPasswordFocus(true)}
+                            onBlur={()=>setValidNewPasswordFocus(false)}
+                            ></input>
+                            <p id='pwdnote' className={ validNewPasswordFocus && !validNewPassword ? "instructions" : "offscreen"}>
+                                Hasło musi zawierać:<br />
+                                -Co najmniej jeden znak specjalny (@$!%*#?&),<br />
+                                -Minimum jedną dużą literę,<br/>
+                                -Minimum 8 znaków.
+                            </p>
                             {errors.newPassword && <div className='Danger-Div'><span className='Danger-Span'> { errors.newPassword } </span></div>}
                         </div>
                         <div className='Input-Area-Change-Password'>
                             <label htmlFor='password'><b>Potwierdź nowe hasło:</b></label>
                             <br></br>
-                            <input type='password' required onChange={(e) => setCheckNewPassword(e.target.value)}></input>
+                            <input 
+                                type='password' 
+                                required 
+                                onChange={(e) => setCheckNewPassword(e.target.value)}
+                                aria-invalid={validCheckNewPassword ? "false" : "true"}
+                                aria-describedby='confpwdnote'
+                                onFocus={()=>setValidCheckPasswordFocus(true)}
+                                onBlur={()=>setValidCheckPasswordFocus(false)}
+                            ></input>
+                            <p id='confpwdnote' className={ validCheckPasswordFocus && !validCheckNewPassword ? "instructions" : "offscreen"}>
+                                Potwierdź hasło!
+                            </p>
                             {errors.checkNewPassword && <div className='Danger-Div'><span className='Danger-Span'> { errors.checkNewPassword } </span></div>}
 
                         </div>
